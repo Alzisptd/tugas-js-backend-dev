@@ -15,7 +15,7 @@ app.get('/api/produk',(req,res)=>{
 });
 
 // GET produk berdasarkan ID
-app.get('/api/produk/:id',(req,res)=>{
+app.get('/api/produkid/:id',(req,res)=>{
     const productid = parseInt(req.params.id);
     const product = products.find(p => p.id === productid);
     if (product){
@@ -26,9 +26,9 @@ app.get('/api/produk/:id',(req,res)=>{
 });
 
 // GET produk berdasarkan Nama
-app.get('/api/produk/:name',(req,res)=>{
+app.get('/api/produkname/:name',(req,res)=>{
     const productname = req.params.name;
-    const product = products.find(p => p.name === productname);
+    const product = products.find(p => p.name.toLowerCase() === productname.toLowerCase());
     if (product){
         res.json(product);
     }else{
